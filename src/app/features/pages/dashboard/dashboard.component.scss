@@ -4,4 +4,9 @@
   margin: 0 auto;
   width: 750px;
 
+  .table-row:hover {
+    background-color: lightgrey;
+    cursor: pointer;
+  }
+
 }

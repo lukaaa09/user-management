@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { Form, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoginComponent implements OnInit{
   form = new FormGroup({
@@ -28,10 +29,7 @@ export class LoginComponent implements OnInit{
   }
 
   SubmitValue() {
-    const username = this.form.get('username')?.value
-    const password = this.form.get('password')?.value
-
-    if(username === 'admin' && password === 'admin') {
+    if(this.username.value === 'admin' && this.password.value === 'admin') {
       alert('successfully register')
       this._router.navigateByUrl('/dashboard').then()
       this.form.reset()

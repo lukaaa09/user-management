@@ -6,15 +6,19 @@
   }
   &-message{
     background-color: #ffa1a1;
-    width: 530px;
+    height: 50px;
     border-radius: 5px;
     margin-top: 20px;
     border: 1px solid pink;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
 
     p{
-      margin-left: 20px;
-      margin-top: 10px;
+      margin: 0;
+      padding: 0;
     }
+
   }
 }
 .container{
@@ -24,12 +28,14 @@
   flex-direction: column;
   margin-top: 50px;
   border: 1px solid gray;
-  width: 531px;
+  max-width: 530px;
+  width: 90%;
+  padding: 0;
 
   .header{
     border-bottom: 1px solid gray;
-    width: 529px;
     background-color: #eeeeee;
+    width: 100%;
 
     h3{
       font-size: 22px;
@@ -38,23 +44,19 @@
       font-weight: normal;
     }
   }
-
-  form{
+  .content{
+    width: 100%;
     padding: 20px;
 
-    .form-group{
-      margin-bottom: 20px;
+      .form-group{
+        margin-bottom: 20px;
 
-      input{
-        width: 500px;
+        input.ng-invalid.ng-touched{
+          border: 1px solid red;
+        }
+
       }
-    }
+
   }
-  button{
-    margin-left: 17px;
-    margin-bottom: 10px;
-  }
-}
-input.ng-invalid.ng-touched{
-  border: 1px solid red;
+
 }

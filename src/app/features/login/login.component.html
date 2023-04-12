@@ -6,13 +6,13 @@
 </div>
 <div class="container">
   <div class="header">
-    <h3 class="text-start">Angular Signing</h3>
+    <h3 class="text-start">Angular Signin</h3>
   </div>
   <div class="content">
     <form [formGroup]="form">
       <div class="form-group">
 
-        <label class="form-label" for="username">Username:</label>
+        <label class="form-label" for="username">USERNAME</label>
 
         <input class="form-control"
                type="text"
@@ -23,14 +23,14 @@
 
         <div class="error.messages">
           <ng-container *ngIf="username.touched && username.errors">
-            <p *ngIf="username.errors['required']" class="text-danger">Required Field</p>
-            <p *ngIf="username.errors['minlength']" class="text-danger">Write at least 5 character</p>
+            <p *ngIf="username.errors['required']" class="text-danger mt-1">Username is required</p>
+            <p *ngIf="username.errors['minlength']" class="text-danger mt-1">Write at least 5 character</p>
           </ng-container>
         </div>
       </div>
       <div class="form-group">
 
-        <label class="form-label" for="password">password:</label>
+        <label class="form-label" for="password">PASSWORD</label>
 
         <input class="form-control"
                id="password"
@@ -38,15 +38,14 @@
                placeholder="password: admin"
                formControlName="password"
                required>
+        <div class="error-messages">
+          <ng-container *ngIf="password.touched && password.errors">
+            <p *ngIf="password.errors['required']" class="text-danger mt-1">Password is required</p>
+            <p *ngIf="password.errors['minlength']" class="text-danger mt-1">Write at least 5 character</p>
+          </ng-container>
+        </div>
       </div>
-
-      <div class="error-messages">
-        <ng-container *ngIf="password.touched && password.errors">
-          <p *ngIf="password.errors['required']" class="text-danger">Required Field</p>
-          <p *ngIf="password.errors['minlength']" class="text-danger">Write at least 5 character</p>
-        </ng-container>
-      </div>
+      <button [disabled]="form.invalid" class="btn bg-primary text-white" (click)="SubmitValue()">Signin</button>
     </form>
-    <button [disabled]="form.invalid" class="btn bg-primary text-white" (click)="SubmitValue()">Signing</button>
   </div>
 </div>

@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { GetusersService } from '../../../core/services/getusers.service';
+import { ChangeDetectionStrategy, Component, ElementRef, HostListener, OnInit } from '@angular/core';
+import { UserService } from '../../../core/services/user.service';
 import { UserInformation } from '../../../core/interfaces/user-information.model';
 import { BehaviorSubject } from 'rxjs';
 
@@ -11,13 +11,24 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class DashboardComponent implements OnInit{
   userDetails: BehaviorSubject<UserInformation[]> = new BehaviorSubject<UserInformation[]>([])
-  constructor(private usersService: GetusersService) {
+  isContextVisible: boolean = false
+  contextPositionX: number = 0
+  contextPositionY: number = 0
+  constructor(private userService: UserService, private elementRef: ElementRef) {
+
   }
+  @HostListener('document:click', ['$event.target'])
 
   ngOnInit() {
-    this.usersService.getUsers().subscribe(res => {
+    this.userService.getUsers().subscribe(res => {
       this.userDetails.next(res)
       console.log(this.userDetails)
     })
+  }
+
+  showContextMenu(event: MouseEvent): void {
+    this.contextPositionX = event.clientX
+    this.contextPositionY = event.clientY
+    this.isContextVisible = !this.isContextVisible
   }
 }
