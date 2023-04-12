@@ -1,19 +1,25 @@
-<div class="container">
-  <div class="content" *ngFor="let users of userDetails | async">
-    <div>
-      <span>id:{{users.id}}</span>
-    </div>
-    <div>
-      <span>name:{{users.name}}</span>
-    </div>
-    <div>
-      <span>username: {{users.username}}</span>
-    </div>
-    <div>
-      <span>email:{{users.email}}</span>
-    </div>
-    <div>
-      <span>website:{{users.website}}</span>
-    </div>
-  </div>
+<div>
+  <h1 class="text-center">Users List</h1>
+</div>
+<div class="table-responsive">
+  <table class="table table-bordered">
+    <thead>
+    <tr>
+      <th class="col-sm-1">ID</th>
+      <th class="col-sm-3">Name</th>
+      <th class="col-sm-2">Username</th>
+      <th class="col-sm-3">Email</th>
+      <th class="col-sm-3">Website</th>
+    </tr>
+    </thead>
+    <tbody *ngFor="let users of userDetails | async">
+    <tr>
+      <td class="col-sm-1">{{users.id}}</td>
+      <td class="col-sm-3">{{users.name}}</td>
+      <td class="col-sm-2">{{users.username}}</td>
+      <td class="col-sm-3">{{users.email}}</td>
+      <td class="col-sm-3">{{users.website}}</td>
+    </tr>
+    </tbody>
+  </table>
 </div>
