@@ -8,7 +8,7 @@ import { ContextMenuComponent } from '../../shared/context-menu/context-menu.com
 @NgModule({
   declarations: [
     DashboardComponent,
-    ContextMenuComponent
+    ContextMenuComponent,
   ],
   imports: [
     CommonModule,

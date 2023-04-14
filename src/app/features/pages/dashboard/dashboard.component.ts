@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, HostListener, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { UserService } from '../../../core/services/user.service';
 import { UserInformation } from '../../../core/interfaces/user-information.model';
 import { BehaviorSubject } from 'rxjs';
@@ -14,10 +14,8 @@ export class DashboardComponent implements OnInit{
   isContextVisible: boolean = false
   contextPositionX: number = 0
   contextPositionY: number = 0
-  constructor(private userService: UserService, private elementRef: ElementRef) {
-
+  constructor(private userService: UserService) {
   }
-  @HostListener('document:click', ['$event.target'])
 
   ngOnInit() {
     this.userService.getUsers().subscribe(res => {

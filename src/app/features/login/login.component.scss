@@ -5,14 +5,14 @@
     align-items: center;
   }
   &-message{
-    background-color: #ffa1a1;
     height: 50px;
     border-radius: 5px;
     margin-top: 20px;
-    border: 1px solid pink;
     display: flex;
     align-items: center;
     padding: 0 20px;
+    max-width: 530px;
+    width: 90%;
 
     p{
       margin: 0;

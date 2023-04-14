@@ -1,1 +1,9 @@
-<p [ngStyle]="{'left': contextPositionX+'px', 'top': contextPositionY+'px'}" >context-menu works!</p>
+<div
+     class="box"
+     [ngStyle]="{'left': contextPositionX+'px', 'top': contextPositionY+'px'}"
+     >
+  <div class="menu">
+    <span (click)="navigateToSingleUserPage(1)"  class="details">Details</span>
+    <span class="delete">Delete</span>
+  </div>
+</div>

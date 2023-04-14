@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { LoginService } from '../../core/services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit{
     password: new FormControl('', [Validators.required, Validators.minLength(5)])
   })
   showPopUp = false
-  constructor(private _router: Router) {
+  constructor(private _router: Router, private loginService: LoginService) {
   }
 
   ngOnInit() {
@@ -31,6 +32,7 @@ export class LoginComponent implements OnInit{
   SubmitValue() {
     if(this.username.value === 'admin' && this.password.value === 'admin') {
       alert('successfully register')
+      this.loginService.isUserLoggedIn = true
       this._router.navigateByUrl('/dashboard').then()
       this.form.reset()
     }else{
