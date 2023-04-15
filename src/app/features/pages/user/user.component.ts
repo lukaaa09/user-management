@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { UserService } from '../../../core/services/user.service';
 import { ActivatedRoute } from '@angular/router';
 import { UserInformation } from '../../../core/interfaces/user-information.model';
@@ -7,7 +7,8 @@ import { BehaviorSubject } from 'rxjs';
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
-  styleUrls: ['./user.component.scss']
+  styleUrls: ['./user.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UserComponent implements OnInit{
   getUserId: any
@@ -22,7 +23,9 @@ export class UserComponent implements OnInit{
 
   getUser() {
     this.userService.getSingleUser(this.getUserId).subscribe(res => {
-      this.users.next(res)
+      const userArray = [res]
+      // @ts-ignore
+      this.users.next(userArray)
       console.log(this.users)
     })
   }

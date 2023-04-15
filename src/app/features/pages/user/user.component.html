@@ -2,7 +2,7 @@
     <img src="assets/images/received_655190985068488.jpeg">
     <div class="main-content" *ngFor="let user of users | async ">
       <span class="id">{{user.id}}</span>
-      <span class="l">L</span>
+      <span class="l">{{ user.name.slice(0, 1) }}</span>
       <span class="name">{{user.name}}</span>
       <span class="email">{{user.email}}</span>
     </div>

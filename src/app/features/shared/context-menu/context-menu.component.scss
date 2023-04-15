@@ -15,8 +15,11 @@
 
     }
     .delete{
-      padding: 0 8px;
+      padding: 3px 8px;
       cursor: pointer;
+    }
+    span:hover{
+      background-color: lightgrey;
     }
   }
 }

@@ -37,6 +37,7 @@ export class DashboardComponent implements OnInit{
     const cutUser = confirm('Are You Sure')
     if(index > -1 && cutUser) {
       this.userDetails.value.splice(index, 1)
+      this.isContextVisible = false
     }
   }
 }
