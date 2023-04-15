@@ -1,10 +1,10 @@
 <div class="container">
     <img src="assets/images/received_655190985068488.jpeg">
-    <div class="main-content">
-      <span class="id">1</span>
+    <div class="main-content" *ngFor="let user of users | async ">
+      <span class="id">{{user.id}}</span>
       <span class="l">L</span>
-      <span class="name">luka kurtanidze</span>
-      <span class="email">kurtanidze@gmail.com</span>
+      <span class="name">{{user.name}}</span>
+      <span class="email">{{user.email}}</span>
     </div>
     <div class="icon-footers">
       <img src="assets/images/1485482214-facebook_78681.png">

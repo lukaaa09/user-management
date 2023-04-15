@@ -13,7 +13,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr (click)="showContextMenu($event)" class="table-row" *ngFor="let users of userDetails | async">
+    <tr (click)="showContextMenu($event, users)" class="table-row" *ngFor="let users of userDetails | async">
       <td class="col-sm-1">{{users.id}}</td>
       <td class="col-sm-3">{{users.name}}</td>
       <td class="col-sm-2">{{users.username}}</td>
@@ -25,5 +25,7 @@
 </div>
 <app-context-menu *ngIf="isContextVisible"
                   [contextPositionX]="contextPositionX"
-                  [contextPositionY]="contextPositionY">
+                  [contextPositionY]="contextPositionY"
+                  [user]="selectedUser"
+                  (removeUser)="deleteUser($event)">
 </app-context-menu>

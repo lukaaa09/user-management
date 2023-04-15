@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { UserService } from '../../../core/services/user.service';
 import { UserInformation } from '../../../core/interfaces/user-information.model';
 import { BehaviorSubject } from 'rxjs';
@@ -14,6 +14,7 @@ export class DashboardComponent implements OnInit{
   isContextVisible: boolean = false
   contextPositionX: number = 0
   contextPositionY: number = 0
+  selectedUser?: UserInformation
   constructor(private userService: UserService) {
   }
 
@@ -24,9 +25,18 @@ export class DashboardComponent implements OnInit{
     })
   }
 
-  showContextMenu(event: MouseEvent): void {
+  showContextMenu(event: MouseEvent, user: UserInformation): void {
     this.contextPositionX = event.clientX
     this.contextPositionY = event.clientY
     this.isContextVisible = !this.isContextVisible
+    this.selectedUser = user
+  }
+
+  deleteUser(user: UserInformation): void {
+    const index = this.userDetails.value.indexOf(user)
+    const cutUser = confirm('Are You Sure')
+    if(index > -1 && cutUser) {
+      this.userDetails.value.splice(index, 1)
+    }
   }
 }

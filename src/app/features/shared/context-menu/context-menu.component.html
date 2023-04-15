@@ -3,7 +3,7 @@
      [ngStyle]="{'left': contextPositionX+'px', 'top': contextPositionY+'px'}"
      >
   <div class="menu">
-    <span (click)="navigateToSingleUserPage(1)"  class="details">Details</span>
-    <span class="delete">Delete</span>
+    <span (click)="navigateToSingleUserPage(user?.id)"  class="details">Details</span>
+    <span (click)="deleteUser(user)" class="delete">Delete</span>
   </div>
 </div>

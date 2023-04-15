@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserInformation } from '../../../core/interfaces/user-information.model';
 import { UserService } from '../../../core/services/user.service';
@@ -12,16 +12,15 @@ export class ContextMenuComponent implements OnInit{
   @Input() contextPositionX: number = 0
   @Input() contextPositionY: number = 0
   isContextVisible: boolean = false
-  user: UserInformation[] = []
+  @Input() user?: UserInformation
+  @Output() removeUser: EventEmitter<UserInformation> = new EventEmitter<UserInformation>()
 
   constructor(private elementRef: ElementRef, private router: Router, private userService: UserService) {
   }
   @HostListener('document:click', ['$event.target'])
 
   ngOnInit() {
-    this.userService.getUsers().subscribe(res => {
-      this.user = res
-    })
+
   }
 
   showContextBox(targetElement: any) {
@@ -31,7 +30,11 @@ export class ContextMenuComponent implements OnInit{
     }
   }
 
-  navigateToSingleUserPage(id:number) {
+  deleteUser(user?: UserInformation): void {
+    this.removeUser.emit(user)
+  }
+
+  navigateToSingleUserPage(id?:number) {
     this.router.navigateByUrl(`/user/${id}`).then()
   }
 }
