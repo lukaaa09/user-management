@@ -12,7 +12,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class UserComponent implements OnInit{
   getUserId: any
-  users: BehaviorSubject<UserInformation[]> = new BehaviorSubject<UserInformation[]>([])
+  users: BehaviorSubject<UserInformation> = new BehaviorSubject<UserInformation>({} as UserInformation)
   constructor(private userService: UserService, private activatedRoute: ActivatedRoute) {
   }
 
@@ -23,9 +23,8 @@ export class UserComponent implements OnInit{
 
   getUser() {
     this.userService.getSingleUser(this.getUserId).subscribe(res => {
-      const userArray = [res]
       // @ts-ignore
-      this.users.next(userArray)
+      this.users.next(res)
       console.log(this.users)
     })
   }

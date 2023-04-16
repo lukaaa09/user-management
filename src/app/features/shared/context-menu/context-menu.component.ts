@@ -13,25 +13,16 @@ export class ContextMenuComponent implements OnInit{
   @Input() contextPositionY: number = 0
   isContextVisible: boolean = false
   @Input() user?: UserInformation
-  @Output() removeUser: EventEmitter<UserInformation> = new EventEmitter<UserInformation>()
+  @Output() removeUser: EventEmitter<number> = new EventEmitter<number>()
 
-  constructor(private elementRef: ElementRef, private router: Router, private userService: UserService) {
+  constructor( private router: Router) {
   }
-  @HostListener('document:click', ['$event.target'])
 
   ngOnInit() {
 
   }
-
-  showContextBox(targetElement: any) {
-    const clickInside = this.elementRef.nativeElement.contains(targetElement)
-    if(!clickInside) {
-      this.isContextVisible = true
-    }
-  }
-
-  deleteUser(user?: UserInformation): void {
-    this.removeUser.emit(user)
+  deleteUser(id?: number): void {
+    this.removeUser.emit(id)
   }
 
   navigateToSingleUserPage(id?:number) {

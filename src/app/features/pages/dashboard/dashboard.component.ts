@@ -28,15 +28,18 @@ export class DashboardComponent implements OnInit{
   showContextMenu(event: MouseEvent, user: UserInformation): void {
     this.contextPositionX = event.clientX
     this.contextPositionY = event.clientY
-    this.isContextVisible = !this.isContextVisible
+    this.isContextVisible = true
     this.selectedUser = user
   }
 
-  deleteUser(user: UserInformation): void {
-    const index = this.userDetails.value.indexOf(user)
-    const cutUser = confirm('Are You Sure')
-    if(index > -1 && cutUser) {
-      this.userDetails.value.splice(index, 1)
+  outsideClick() {
+   this.isContextVisible = false
+  }
+
+  deleteUser(id: number ):void {
+    let cut = confirm('Are you sure?')
+    if(cut) {
+      this.userDetails.next(this.userDetails.value.filter(user => user.id !== id));
       this.isContextVisible = false
     }
   }

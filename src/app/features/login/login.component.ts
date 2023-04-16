@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from '../../core/services/login.service';
+import { LoginInformation } from '../../core/interfaces/login-information.model';
 
 @Component({
   selector: 'app-login',
@@ -32,7 +33,7 @@ export class LoginComponent implements OnInit{
   SubmitValue() {
     if(this.username.value === 'admin' && this.password.value === 'admin') {
       alert('successfully register')
-      this.loginService.isUserLoggedIn = true
+      this.loginService.setUserInfo(this.form.value as LoginInformation)
       this._router.navigateByUrl('/dashboard').then()
       this.form.reset()
     }else{
