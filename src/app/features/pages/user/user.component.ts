@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { UserService } from '../../../core/services/user.service';
 import { ActivatedRoute } from '@angular/router';
 import { UserInformation } from '../../../core/interfaces/user-information.model';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-user',
@@ -12,7 +12,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class UserComponent implements OnInit{
   getUserId: any
-  users: BehaviorSubject<UserInformation> = new BehaviorSubject<UserInformation>({} as UserInformation)
+  user: Subject<UserInformation> = new Subject<UserInformation>()
   constructor(private userService: UserService, private activatedRoute: ActivatedRoute) {
   }
 
@@ -23,9 +23,7 @@ export class UserComponent implements OnInit{
 
   getUser() {
     this.userService.getSingleUser(this.getUserId).subscribe(res => {
-      // @ts-ignore
-      this.users.next(res)
-      console.log(this.users)
+      this.user.next(res)
     })
   }
 

@@ -1,6 +1,5 @@
 <div class="container">
-    <img src="assets/images/received_655190985068488.jpeg">
-    <div class="main-content" *ngIf="(users | async) as user">
+    <div class="main-content" *ngIf="(user | async) as user">
       <span class="id">{{user.id}}</span>
       <span class="l">{{ user.name[0]}}</span>
       <span class="name">{{user.name}}</span>
