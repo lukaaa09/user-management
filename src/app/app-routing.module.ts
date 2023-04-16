@@ -19,12 +19,12 @@ const routes: Routes = [
   {
     path: 'dashboard',
     loadChildren: () => import('./features/pages/dashboard/dashboard.module').then(m => m.DashboardModule),
-    // canActivate: [LoginGuard]
+    canActivate: [LoginGuard]
   },
   {
     path: 'user/:id',
     loadChildren: () => import('./features/pages/user/user.module').then(m => m.UserModule),
-    // canActivate: [LoginGuard]
+    canActivate: [LoginGuard]
   },
   {
     path: '**',
