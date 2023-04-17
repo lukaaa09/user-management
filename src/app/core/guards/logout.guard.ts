@@ -6,14 +6,14 @@ import { LoginService } from '../services/login.service';
 @Injectable({
   providedIn: 'root'
 })
-export class LoginGuard implements CanActivate {
+export class LogoutGuard implements CanActivate {
   constructor(private loginService: LoginService, private router: Router) {
   }
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if(this.loginService.isUserLoggedIn) {
-       this.router.navigateByUrl('dashboard').then()
+    if(!this.loginService.isUserLoggedIn) {
+      this.router.navigateByUrl('/').then()
     }
     return true
   }
