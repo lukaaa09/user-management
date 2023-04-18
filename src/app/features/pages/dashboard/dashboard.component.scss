@@ -2,10 +2,13 @@
   border: 1px solid gray;
   display: table;
   margin: 0 auto;
-  width: 750px;
+  max-width: 750px;
 
   .table-row:hover {
     background-color: lightgrey;
     cursor: pointer;
+  }
+  @media screen and (max-width: 760px) {
+    width: 100%;
   }
 }
