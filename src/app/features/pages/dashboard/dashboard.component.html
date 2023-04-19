@@ -1,33 +1,35 @@
-<div>
-  <h1 class="text-center">Users List</h1>
+<div class="main-container">
+  <div class="header">
+    <h1 >Users List</h1>
+  </div>
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th class="col-sm-1">ID</th>
+        <th class="col-sm-3">Name</th>
+        <th class="col-sm-2">Username</th>
+        <th class="col-sm-3">Email</th>
+        <th class="col-sm-3">Website</th>
+      </tr>
+      </thead>
+      <tbody  appClickedOutside
+              (clickOutside)="outsideClick()">
+      <tr (click)="showContextMenu($event, users)"
+          class="table-row" *ngFor="let users of userDetails | async">
+        <td class="col-sm-1">{{users.id}}</td>
+        <td class="col-sm-3">{{users.name}}</td>
+        <td class="col-sm-2">{{users.username}}</td>
+        <td class="col-sm-3">{{users.email}}</td>
+        <td class="col-sm-3">{{users.website}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <app-context-menu *ngIf="isContextVisible"
+                    [contextPositionX]="contextPositionX"
+                    [contextPositionY]="contextPositionY"
+                    [user]="selectedUser"
+                    (removeUser)="deleteUser($event)">
+  </app-context-menu>
 </div>
-<div class="table-responsive">
-  <table class="table table-bordered">
-    <thead>
-    <tr>
-      <th class="col-sm-1">ID</th>
-      <th class="col-sm-3">Name</th>
-      <th class="col-sm-2">Username</th>
-      <th class="col-sm-3">Email</th>
-      <th class="col-sm-3">Website</th>
-    </tr>
-    </thead>
-  <tbody  appClickedOutside
-          (clickOutside)="outsideClick()">
-    <tr (click)="showContextMenu($event, users)"
-        class="table-row" *ngFor="let users of userDetails | async">
-      <td class="col-sm-1">{{users.id}}</td>
-      <td class="col-sm-3">{{users.name}}</td>
-      <td class="col-sm-2">{{users.username}}</td>
-      <td class="col-sm-3">{{users.email}}</td>
-      <td class="col-sm-3">{{users.website}}</td>
-    </tr>
-    </tbody>
-  </table>
-</div>
-<app-context-menu *ngIf="isContextVisible"
-                  [contextPositionX]="contextPositionX"
-                  [contextPositionY]="contextPositionY"
-                  [user]="selectedUser"
-                  (removeUser)="deleteUser($event)">
-</app-context-menu>

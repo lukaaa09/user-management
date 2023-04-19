@@ -1,14 +1,35 @@
-.table {
-  border: 1px solid gray;
-  display: table;
+.main-container{
   margin: 0 auto;
   max-width: 750px;
+  .table {
+    border: 1px solid gray;
+    display: table;
 
-  .table-row:hover {
-    background-color: lightgrey;
-    cursor: pointer;
-  }
-  @media screen and (max-width: 760px) {
-    width: 100%;
+    .table-row:hover {
+      background-color: lightgrey;
+      cursor: pointer;
+    }
+    @media screen and (max-width: 760px) {
+      width: 100%;
+      tbody{
+        tr{
+          td{
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            max-width: 10ch;
+          }
+        }
+      }
+    }
+    @media screen and (max-width: 400px) {
+      tbody{
+        tr{
+          td{
+            max-width: 5ch;
+          }
+        }
+      }
+    }
   }
 }
